@@ -6,10 +6,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <CoreLocation/CoreLocation.h>
+#import "City.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface WeatherTableViewController : UITableViewController
+
+@property (strong, nonatomic) City *city;
 
 @end
 

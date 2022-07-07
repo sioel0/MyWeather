@@ -6,12 +6,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "CityList.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @protocol CitiesDataSource <NSObject>
 
--(NSArray *)getCities;
+-(CityList *)getCities;
 
 @end
 

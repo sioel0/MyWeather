@@ -9,12 +9,14 @@
 
 @implementation City
 
--(instancetype) initWithName:(NSString *)name {
+-(instancetype) initWithName:(NSString *)name
+                    latitude:(double)latitude
+                   longitude:(double)longitude {
     if(self = [super init]) {
-        _name = name;
+        _name = [name copy];
         // open-meteo api to find out latitude and longitude
-        _latitude = 0.0;
-        _longitude = 0.0;
+        _latitude = latitude;
+        _longitude = longitude;
     }
     return self;
 }

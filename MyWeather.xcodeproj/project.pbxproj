@@ -10,6 +10,7 @@
 		AD08CB432875DD65009682D7 /* City.m in Sources */ = {isa = PBXBuildFile; fileRef = AD08CB422875DD65009682D7 /* City.m */; };
 		AD08CB462875DF11009682D7 /* CityList.m in Sources */ = {isa = PBXBuildFile; fileRef = AD08CB452875DF11009682D7 /* CityList.m */; };
 		AD08CB4C2875E4D8009682D7 /* CityListDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = AD08CB4B2875E4D8009682D7 /* CityListDataSource.m */; };
+		ADABF8672876DDDB00A72620 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADABF8662876DDDB00A72620 /* CoreLocation.framework */; };
 		ADB1BFA52875C7E90094936D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB1BFA42875C7E90094936D /* AppDelegate.m */; };
 		ADB1BFA82875C7E90094936D /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB1BFA72875C7E90094936D /* SceneDelegate.m */; };
 		ADB1BFAE2875C7E90094936D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADB1BFAC2875C7E90094936D /* Main.storyboard */; };
@@ -29,6 +30,7 @@
 		AD08CB472875E41C009682D7 /* CitiesDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CitiesDataSource.h; sourceTree = "<group>"; };
 		AD08CB4A2875E4D8009682D7 /* CityListDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CityListDataSource.h; sourceTree = "<group>"; };
 		AD08CB4B2875E4D8009682D7 /* CityListDataSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CityListDataSource.m; sourceTree = "<group>"; };
+		ADABF8662876DDDB00A72620 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		ADB1BFA02875C7E90094936D /* MyWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADB1BFA32875C7E90094936D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		ADB1BFA42875C7E90094936D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -52,6 +54,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ADABF8672876DDDB00A72620 /* CoreLocation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,11 +75,20 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		ADABF8652876DDDB00A72620 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				ADABF8662876DDDB00A72620 /* CoreLocation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		ADB1BF972875C7E90094936D = {
 			isa = PBXGroup;
 			children = (
 				ADB1BFA22875C7E90094936D /* MyWeather */,
 				ADB1BFA12875C7E90094936D /* Products */,
+				ADABF8652876DDDB00A72620 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -273,7 +285,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -325,7 +337,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.4;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -358,6 +370,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				a = "";
 			};
 			name = Debug;
 		};
@@ -386,6 +399,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				a = "";
 			};
 			name = Release;
 		};

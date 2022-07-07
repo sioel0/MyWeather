@@ -18,6 +18,12 @@ NS_ASSUME_NONNULL_BEGIN
 
 -(NSMutableArray *)getAll;
 
+-(long)size;
+
+-(City *)getAtIndex:(NSInteger)index;
+
+-(BOOL)contains:(City *)city;
+
 @end
 
 NS_ASSUME_NONNULL_END

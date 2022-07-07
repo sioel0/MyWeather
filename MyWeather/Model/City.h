@@ -15,7 +15,9 @@ NS_ASSUME_NONNULL_BEGIN
 @property double latitude;
 @property double longitude;
 
--(instancetype) initWithName:(NSString *)name;
+-(instancetype) initWithName:(NSString *)name
+                    latitude:(double) latitude
+                   longitude:(double) longitude;
 
 @end
 

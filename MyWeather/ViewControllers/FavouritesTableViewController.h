@@ -6,10 +6,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CityListDataSource.h"
+#import "WeatherTableViewController.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface FavouritesTableViewController : UITableViewController
+
+@property (strong, nonatomic) CityListDataSource *dataSource;
+@property (weak) WeatherTableViewController *previous;
 
 @end
 
