@@ -45,10 +45,22 @@
     else
         self.FavouriteButton.image = [UIImage systemImageNamed:@"star"];
     
-    // fetch data and edit appearance
-    self.ConditionImage.image = [UIImage systemImageNamed:@"sun.max"];
-    self.ConditionCell.textLabel.text = @"Soleggiato";
+    NSLog(@"city: %@", self.city.name);
+    NSLog(@"lat: %f", self.city.latitude);
+    NSLog(@"long: %f", self.city.longitude);
+    // TODO: add other data and parse values
+    dispatch_queue_t queue = dispatch_queue_create("get_meteo_information", NULL);
+    dispatch_async(queue, ^{
+        NSString *urlString = [NSString stringWithFormat: @"https://api.open-meteo.com/v1/forecast?latitude=%f&longitude=%f&current_weather=true", self.city.latitude, self.city.longitude];
+        NSURL *url = [NSURL URLWithString:urlString];
+        NSData *data = [NSData dataWithContentsOfURL:url];
+        NSLog(@"%@", data.description);
+        id value = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
+        NSDictionary *weather = (NSDictionary *)value;
+        NSString *current_weather = [weather valueForKey:@"current_weather"];
+    });
 }
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -58,13 +70,13 @@
     self.locationManager.desiredAccuracy = kCLLocationAccuracyKilometer;
     self.locationManager.distanceFilter = kCLDistanceFilterNone;
     self.locationManager.delegate = self;
+    [self.locationManager requestWhenInUseAuthorization];
     [self.locationManager startUpdatingLocation];
-    //self.city = [[City alloc] initWithName:@"Londra" latitude:51.48 longitude:-0.14];
-    [self locationManager:self.locationManager didUpdateLocations:self.locations];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-    [self renderView];
+    if(self.city.name != nil)
+        [self renderView];
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -86,16 +98,12 @@
     CLGeocoder *geocoder = [[CLGeocoder alloc] init];
     [geocoder reverseGeocodeLocation:currentLocation completionHandler:^(NSArray *placemarks, NSError *error) {
         CLPlacemark *placemark = [placemarks lastObject];
-
-        self.city.name = placemark.locality;
-        NSLog(@"%@", placemark.locality);
-        NSLog(@"lat: %f long: %f", placemark.location.coordinate.latitude, placemark.location.coordinate.longitude);
-        NSLog(@"lat: %f long: %f", self.locationManager.location.coordinate.latitude, self.locationManager.location.coordinate.longitude);
-        self.city.latitude = placemark.location.coordinate.latitude;
-        self.city.longitude = placemark.location.coordinate.longitude;
-        
+        self.city = [[City alloc] initWithName:placemark.locality latitude:placemark.location.coordinate.latitude longitude: placemark.location.coordinate.longitude];
+        if(self.city.name != nil) {
+            [self.locationManager stopUpdatingLocation];
+            [self renderView];
+        }
     }];
-    
 }
 
 -(void)locationManager:(CLLocationManager *)manager didFailWithError:(NSError *)error {

@@ -8,6 +8,7 @@
 #import "FavouritesTableViewController.h"
 #import "CityList.h"
 #import "CityListDataSource.h"
+#import "MapViewController.h"
 
 @interface FavouritesTableViewController ()
 
@@ -47,14 +48,19 @@
     [self.navigationController popViewControllerAnimated:YES];
 }
 
-/*
+
 #pragma mark - Navigation
 
 // In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    if([segue.identifier isEqualToString:@"ShowMap"]){
+        if([segue.destinationViewController isKindOfClass:[MapViewController class]]){
+            MapViewController *vc = (MapViewController *)segue.destinationViewController;
+            vc.currentLocation = self.previous.city;
+            vc.list = self.list.getAll;
+        }
+    }
 }
-*/
+
 
 @end

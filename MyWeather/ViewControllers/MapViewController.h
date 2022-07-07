@@ -6,10 +6,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "CityList.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface MapViewController : UIViewController
+
+@property (strong, nonatomic) NSArray *list;
+@property (strong, nonatomic) City *currentLocation;
 
 @end
 

@@ -11,6 +11,7 @@
 		AD08CB462875DF11009682D7 /* CityList.m in Sources */ = {isa = PBXBuildFile; fileRef = AD08CB452875DF11009682D7 /* CityList.m */; };
 		AD08CB4C2875E4D8009682D7 /* CityListDataSource.m in Sources */ = {isa = PBXBuildFile; fileRef = AD08CB4B2875E4D8009682D7 /* CityListDataSource.m */; };
 		ADABF8672876DDDB00A72620 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ADABF8662876DDDB00A72620 /* CoreLocation.framework */; };
+		ADABF86A2877151900A72620 /* City+MapAnnotation.m in Sources */ = {isa = PBXBuildFile; fileRef = ADABF8692877151900A72620 /* City+MapAnnotation.m */; };
 		ADB1BFA52875C7E90094936D /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB1BFA42875C7E90094936D /* AppDelegate.m */; };
 		ADB1BFA82875C7E90094936D /* SceneDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = ADB1BFA72875C7E90094936D /* SceneDelegate.m */; };
 		ADB1BFAE2875C7E90094936D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ADB1BFAC2875C7E90094936D /* Main.storyboard */; };
@@ -31,6 +32,8 @@
 		AD08CB4A2875E4D8009682D7 /* CityListDataSource.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CityListDataSource.h; sourceTree = "<group>"; };
 		AD08CB4B2875E4D8009682D7 /* CityListDataSource.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = CityListDataSource.m; sourceTree = "<group>"; };
 		ADABF8662876DDDB00A72620 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		ADABF8682877151900A72620 /* City+MapAnnotation.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "City+MapAnnotation.h"; sourceTree = "<group>"; };
+		ADABF8692877151900A72620 /* City+MapAnnotation.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "City+MapAnnotation.m"; sourceTree = "<group>"; };
 		ADB1BFA02875C7E90094936D /* MyWeather.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MyWeather.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ADB1BFA32875C7E90094936D /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		ADB1BFA42875C7E90094936D /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -71,6 +74,8 @@
 				AD08CB472875E41C009682D7 /* CitiesDataSource.h */,
 				AD08CB4A2875E4D8009682D7 /* CityListDataSource.h */,
 				AD08CB4B2875E4D8009682D7 /* CityListDataSource.m */,
+				ADABF8682877151900A72620 /* City+MapAnnotation.h */,
+				ADABF8692877151900A72620 /* City+MapAnnotation.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -207,6 +212,7 @@
 				AD08CB462875DF11009682D7 /* CityList.m in Sources */,
 				ADB1BFBF2875D6A00094936D /* WeatherTableViewController.m in Sources */,
 				ADB1BFC52875D6F70094936D /* MapViewController.m in Sources */,
+				ADABF86A2877151900A72620 /* City+MapAnnotation.m in Sources */,
 				ADB1BFC22875D6D30094936D /* FavouritesTableViewController.m in Sources */,
 				AD08CB432875DD65009682D7 /* City.m in Sources */,
 				ADB1BFA82875C7E90094936D /* SceneDelegate.m in Sources */,

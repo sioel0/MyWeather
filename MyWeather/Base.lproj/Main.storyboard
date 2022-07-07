@@ -32,6 +32,9 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="pSe-rA-FNA"/>
+                    <connections>
+                        <outlet property="MapView" destination="Jgo-x6-Urr" id="cyY-oA-mP7"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bMo-UD-9jz" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -348,7 +351,7 @@
                     <navigationItem key="navigationItem" title="Preferiti" id="zJK-nh-dER">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="map" catalog="system" id="8Cv-kv-8oG">
                             <connections>
-                                <segue destination="stb-nf-ET7" kind="show" id="Mhq-nr-aua"/>
+                                <segue destination="stb-nf-ET7" kind="show" identifier="ShowMap" id="Mhq-nr-aua"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
