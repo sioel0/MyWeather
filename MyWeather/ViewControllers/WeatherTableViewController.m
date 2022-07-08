@@ -95,13 +95,13 @@
             self.ConditionImage.image = [self imageForWeatherCode:weathercode.intValue];
             self.ConditionCell.textLabel.text = [self stringForWeatherCode:weathercode.intValue];
             self.FirstDayCell.imageView.image = [self imageForWeatherCode:((NSNumber *)[weathercond objectAtIndex:1]).intValue];
-            self.FirstDayCell.textLabel.text = [NSString stringWithFormat:@"%d/%d", ((NSNumber *)[temperature_min objectAtIndex:1]).intValue, ((NSNumber *)[temperature_max objectAtIndex:1]).intValue];
+            self.FirstDayCell.textLabel.text = [NSString stringWithFormat:@"%d °C/%d °C", ((NSNumber *)[temperature_min objectAtIndex:1]).intValue, ((NSNumber *)[temperature_max objectAtIndex:1]).intValue];
             self.SecondDayCell.imageView.image = [self imageForWeatherCode:((NSNumber *)[weathercond objectAtIndex:2]).intValue];
-            self.SecondDayCell.textLabel.text = [NSString stringWithFormat:@"%d/%d", ((NSNumber *)[temperature_min objectAtIndex:2]).intValue, ((NSNumber *)[temperature_max objectAtIndex:2]).intValue];
+            self.SecondDayCell.textLabel.text = [NSString stringWithFormat:@"%d °C/%d °C", ((NSNumber *)[temperature_min objectAtIndex:2]).intValue, ((NSNumber *)[temperature_max objectAtIndex:2]).intValue];
             self.ThirdDayCell.imageView.image = [self imageForWeatherCode:((NSNumber *)[weathercond objectAtIndex:3]).intValue];
-            self.ThirdDayCell.textLabel.text = [NSString stringWithFormat:@"%d/%d", ((NSNumber *)[temperature_min objectAtIndex:3]).intValue, ((NSNumber *)[temperature_max objectAtIndex:3]).intValue];
+            self.ThirdDayCell.textLabel.text = [NSString stringWithFormat:@"%d °C/%d °C", ((NSNumber *)[temperature_min objectAtIndex:3]).intValue, ((NSNumber *)[temperature_max objectAtIndex:3]).intValue];
             self.ForthDayCell.imageView.image = [self imageForWeatherCode:((NSNumber *)[weathercond objectAtIndex:4]).intValue];
-            self.ForthDayCell.textLabel.text = [NSString stringWithFormat:@"%d/%d", ((NSNumber *)[temperature_min objectAtIndex:4]).intValue, ((NSNumber *)[temperature_max objectAtIndex:4]).intValue];
+            self.ForthDayCell.textLabel.text = [NSString stringWithFormat:@"%d °C/%d °C", ((NSNumber *)[temperature_min objectAtIndex:4]).intValue, ((NSNumber *)[temperature_max objectAtIndex:4]).intValue];
         });
     });
 }
