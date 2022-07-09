@@ -44,17 +44,12 @@
         self.FavouriteButton.image = [UIImage systemImageNamed:@"star.fill"];
     else
         self.FavouriteButton.image = [UIImage systemImageNamed:@"star"];
-    
-    NSLog(@"city: %@", self.city.name);
-    NSLog(@"lat: %f", self.city.latitude);
-    NSLog(@"long: %f", self.city.longitude);
 
     dispatch_queue_t queue = dispatch_queue_create("get_meteo_information", NULL);
     dispatch_async(queue, ^{
         NSString *urlString = [NSString stringWithFormat: @"https://api.open-meteo.com/v1/forecast?latitude=%f&longitude=%f&current_weather=true&daily=temperature_2m_max,temperature_2m_min,weathercode&timezone=UTC", self.city.latitude, self.city.longitude];
         NSURL *url = [NSURL URLWithString:urlString];
         NSData *data = [NSData dataWithContentsOfURL:url];
-        NSLog(@"%@", data.description);
         id value = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         NSDictionary *weather = (NSDictionary *)value;
         // get current weather informations
@@ -156,7 +151,6 @@
 
 -(UIImage *)imageForWeatherCode:(int) value {
     // wmo weather interpretation codes
-    UIImage *result;
     if(value == 0)
         return [UIImage systemImageNamed:@"sun.max"];
     if(value == 1 || value == 2 || value == 3)

@@ -17,10 +17,7 @@
 }
 
 - (NSString *)title {
-    // name + temperature
-    NSString *temperature = @"";
-    NSString *title = [NSString stringWithFormat:@"%@  %@", self.name, temperature];
-    return title;
+    return [NSString stringWithFormat:@"%@", self.name];;
 }
 
 @end
