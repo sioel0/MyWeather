@@ -13,6 +13,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface MapViewController : UIViewController
 
 @property (strong, nonatomic) NSArray *list;
+// used to center the map
 @property (strong, nonatomic) City *currentLocation;
 
 @end

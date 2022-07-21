@@ -34,14 +34,17 @@
 
 @implementation WeatherTableViewController
 
+// used to instantiate the location manager only when it is needed
 -(CLLocationManager *)locationManager {
     if(!_locationManager)
         _locationManager = [[CLLocationManager alloc] init];
     return _locationManager;
 }
 
+// this function sets up all the data inside the table view
 - (void)renderView {
     self.title = self.city.name;
+    // initiate the "add to favourite" button
     if([self.cities contains:self.city]){
         [self.FavouritesButton setTitle: @"Rimuovi dai preferiti" forState: UIControlStateNormal];
         [self.FavouritesButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
@@ -51,6 +54,7 @@
         [self.FavouritesButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     }
 
+    // use open-meteo APIs to get meteo information on the location stored in city property
     dispatch_queue_t queue = dispatch_queue_create("get_meteo_information", NULL);
     dispatch_async(queue, ^{
         NSString *urlString = [NSString stringWithFormat: @"https://api.open-meteo.com/v1/forecast?latitude=%f&longitude=%f&current_weather=true&daily=temperature_2m_max,temperature_2m_min,weathercode&timezone=UTC", self.city.latitude, self.city.longitude];
@@ -58,7 +62,7 @@
         NSData *data = [NSData dataWithContentsOfURL:url];
         id value = [NSJSONSerialization JSONObjectWithData:data options:NSJSONReadingMutableContainers error:nil];
         NSDictionary *weather = (NSDictionary *)value;
-        // get current weather informations
+        // extract current weather data
         NSDictionary *current_weather = [weather valueForKey:@"current_weather"];
         NSNumber *temp = [current_weather valueForKey:@"temperature"];
         NSNumber *windspeed = [current_weather valueForKey:@"windspeed"];
@@ -89,6 +93,7 @@
         NSArray *temperature_max = [daily valueForKey:@"temperature_2m_max"];
         NSArray *weathercond = [daily valueForKey:@"weathercode"];
         
+        // update the UI, it is always done on the main thread
         dispatch_async(dispatch_get_main_queue(), ^{
             self.TemperatureCell.textLabel.text = [NSString stringWithFormat:@"%d °C", temp.intValue];
             self.WindSpeedCell.detailTextLabel.text = [NSString stringWithFormat:@"%d Km/h", windspeed.intValue];
@@ -128,6 +133,7 @@
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 }
 
+// add or remove current city to favourite and update the button appearance
 - (IBAction)AddToFavourites:(id)sender {
     if([self.cities contains:self.city]) {
         [self.cities removeCity:self.city];
@@ -147,6 +153,7 @@
     [geocoder reverseGeocodeLocation:currentLocation completionHandler:^(NSArray *placemarks, NSError *error) {
         CLPlacemark *placemark = [placemarks lastObject];
         self.city = [[City alloc] initWithName:placemark.locality latitude:placemark.location.coordinate.latitude longitude: placemark.location.coordinate.longitude];
+        // once a location is found render the view
         if(self.city.name != nil) {
             [self.locationManager stopUpdatingLocation];
             [self renderView];
@@ -220,7 +227,6 @@
 
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if([segue.identifier isEqualToString:@"FavList"]){
         if([segue.destinationViewController isKindOfClass:[FavouritesTableViewController class]]){

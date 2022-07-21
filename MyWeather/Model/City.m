@@ -14,7 +14,6 @@
                    longitude:(double)longitude {
     if(self = [super init]) {
         _name = [name copy];
-        // open-meteo api to find out latitude and longitude
         _latitude = latitude;
         _longitude = longitude;
     }

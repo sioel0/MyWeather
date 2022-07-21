@@ -59,6 +59,7 @@
     [self searchCity];
 }
 
+// use open-meteo api to get all the possible positions associated to the given city name
 -(void) searchCity {
     NSString *searchString = self.SearchBar.text;
     NSString *escapedString = [searchString stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLHostAllowedCharacterSet]];

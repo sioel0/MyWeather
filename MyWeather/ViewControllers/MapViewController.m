@@ -19,6 +19,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    // setup map view
     self.MapView.delegate = self;
     MKCoordinateRegion mapRegion;
     mapRegion.center = CLLocationCoordinate2DMake(self.currentLocation.latitude, self.currentLocation.longitude);
@@ -35,6 +36,7 @@
     
 }
 
+// setup the annotation that are associated with each map's pin
 - (MKAnnotationView *) mapView:(MKMapView *)mapView
              viewForAnnotation:(id<MKAnnotation>)annotation{
     
@@ -49,6 +51,7 @@
     }
     
     UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 36, 36)];
+    // use a default image to make it faster
     imageView.image = [UIImage systemImageNamed:@"questionmark"];
     view.leftCalloutAccessoryView = imageView;
     
@@ -62,6 +65,7 @@
         if([annotation isKindOfClass:[City class]]) {
             City *city = (City *)annotation;
             dispatch_queue_t queue = dispatch_queue_create("get_meteo_information", NULL);
+            // get meteo informations to update callout view's image
             dispatch_async(queue, ^{
                 NSString *urlString = [NSString stringWithFormat: @"https://api.open-meteo.com/v1/forecast?latitude=%f&longitude=%f&current_weather=true", city.latitude, city.longitude];
                 NSURL *url = [NSURL URLWithString:urlString];

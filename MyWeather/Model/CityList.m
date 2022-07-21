@@ -23,8 +23,7 @@
 
 // add new city only if it is not already in the list
 -(void)addCity:(City *)city {
-    for(City *c in self.list)
-        if([c.name isEqual:city.name])
+    if([self contains:city])
             return;
     [self.list addObject:city];
 }

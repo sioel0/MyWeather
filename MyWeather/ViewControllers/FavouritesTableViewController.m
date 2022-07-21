@@ -44,6 +44,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     City *new = [self.list getAtIndex:indexPath.row];
+    // update the city for weather information and go back to that view
     self.previous.city = new;
     [self.navigationController popViewControllerAnimated:YES];
 }
@@ -51,7 +52,6 @@
 
 #pragma mark - Navigation
 
-// In a storyboard-based application, you will often want to do a little preparation before navigation
 - (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if([segue.identifier isEqualToString:@"ShowMap"]){
         if([segue.destinationViewController isKindOfClass:[MapViewController class]]){

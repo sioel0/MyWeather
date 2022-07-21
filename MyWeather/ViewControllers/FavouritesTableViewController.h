@@ -14,6 +14,7 @@ NS_ASSUME_NONNULL_BEGIN
 @interface FavouritesTableViewController : UITableViewController
 
 @property (strong, nonatomic) CityListDataSource *dataSource;
+// used to update data once a new city has been selected
 @property (weak) WeatherTableViewController *previous;
 
 @end
