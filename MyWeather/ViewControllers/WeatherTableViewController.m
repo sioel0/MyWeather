@@ -8,8 +8,10 @@
 #import <CoreLocation/CoreLocation.h>
 #import "WeatherTableViewController.h"
 #import "FavouritesTableViewController.h"
+#import "SearchViewController.h"
 #import "CityListDataSource.h"
 #import "CityList.h"
+
 
 @interface WeatherTableViewController ()<CLLocationManagerDelegate>
 
@@ -22,7 +24,7 @@
 @property (weak, nonatomic) IBOutlet UITableViewCell *SecondDayCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *ThirdDayCell;
 @property (weak, nonatomic) IBOutlet UITableViewCell *ForthDayCell;
-@property (weak, nonatomic) IBOutlet UIBarButtonItem *FavouriteButton;
+@property (weak, nonatomic) IBOutlet UIButton *FavouritesButton;
 @property (strong, nonatomic) CityListDataSource *dataSource;
 @property (strong, nonatomic) CityList *cities;
 @property (strong, nonatomic) NSMutableArray<CLLocation *> *locations;
@@ -41,9 +43,9 @@
 - (void)renderView {
     self.title = self.city.name;
     if([self.cities contains:self.city])
-        self.FavouriteButton.image = [UIImage systemImageNamed:@"star.fill"];
+        self.FavouritesButton.titleLabel.text = @"Rimuovi dai preferiti";
     else
-        self.FavouriteButton.image = [UIImage systemImageNamed:@"star"];
+        self.FavouritesButton.titleLabel.text = @"Aggiungi ai preferiti";
 
     dispatch_queue_t queue = dispatch_queue_create("get_meteo_information", NULL);
     dispatch_async(queue, ^{
@@ -111,6 +113,7 @@
     self.locationManager.delegate = self;
     [self.locationManager requestWhenInUseAuthorization];
     [self.locationManager startUpdatingLocation];
+    [self.FavouritesButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
@@ -124,11 +127,13 @@
 - (IBAction)AddToFavourites:(id)sender {
     if([self.cities contains:self.city]) {
         [self.cities removeCity:self.city];
-        self.FavouriteButton.image = [UIImage systemImageNamed:@"star"];
+        [self.FavouritesButton setTitle: @"Aggiungi ai preferiti" forState:UIControlStateNormal];
+        [self.FavouritesButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
     }
     else {
         [self.cities addCity:self.city];
-        self.FavouriteButton.image = [UIImage systemImageNamed:@"star.fill"];
+        [self.FavouritesButton setTitle: @"Rimuovi dai preferiti" forState: UIControlStateNormal];
+        [self.FavouritesButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
     }
 }
 
@@ -218,6 +223,12 @@
             FavouritesTableViewController *vc = (FavouritesTableViewController *)segue.destinationViewController;
             vc.previous = self;
             vc.dataSource = self.dataSource;
+        }
+    }
+    else if([segue.identifier isEqualToString:@"Search"]){
+        if([segue.destinationViewController isKindOfClass:[SearchViewController class]]){
+            SearchViewController *vc = (SearchViewController *)segue.destinationViewController;
+            vc.previous = self;
         }
     }
 }

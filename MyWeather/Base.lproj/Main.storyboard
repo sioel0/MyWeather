@@ -243,6 +243,32 @@
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
+                            <tableViewSection headerTitle="Preferiti" id="Kh5-P4-qXg">
+                                <cells>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="FavouritesButtonCell" id="qun-L4-3T2">
+                                        <rect key="frame" x="0.0" y="740.33333015441895" width="414" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qun-L4-3T2" id="9g2-Cr-oSd">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DtM-7y-Pg5">
+                                                    <rect key="frame" x="132" y="6" width="150" height="31"/>
+                                                    <state key="normal" title="Button"/>
+                                                    <buttonConfiguration key="configuration" style="plain" title="Aggiungi ai preferiti"/>
+                                                    <connections>
+                                                        <action selector="AddToFavourites:" destination="Y7p-Ja-2ZA" eventType="touchUpInside" id="41u-tF-zVO"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="DtM-7y-Pg5" firstAttribute="centerX" secondItem="9g2-Cr-oSd" secondAttribute="centerX" id="KYl-HL-kh6"/>
+                                                <constraint firstItem="DtM-7y-Pg5" firstAttribute="centerY" secondItem="9g2-Cr-oSd" secondAttribute="centerY" id="jUL-tO-bRi"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
                         </sections>
                         <connections>
                             <outlet property="dataSource" destination="Y7p-Ja-2ZA" id="lgK-Gi-bnI"/>
@@ -250,21 +276,21 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Cittá" id="LBN-mY-k8k">
-                        <barButtonItem key="leftBarButtonItem" image="star" catalog="system" id="tX0-YY-YSF">
-                            <connections>
-                                <action selector="AddToFavourites:" destination="Y7p-Ja-2ZA" id="pCe-Gh-2ek"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" image="list.bullet" catalog="system" id="Opz-Yc-IJV">
+                        <barButtonItem key="leftBarButtonItem" image="list.bullet" catalog="system" id="Opz-Yc-IJV">
                             <connections>
                                 <segue destination="DXo-N1-4wi" kind="show" identifier="FavList" id="8Pz-kL-hgI"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" image="magnifyingglass" catalog="system" id="enh-lW-CLT">
+                            <connections>
+                                <segue destination="3G9-cq-Vlf" kind="show" identifier="Search" id="oq4-b0-YkN"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="ConditionCell" destination="wHb-pW-rUe" id="VWH-OR-qKk"/>
                         <outlet property="ConditionImage" destination="blS-7j-eze" id="y2x-wD-Ehj"/>
-                        <outlet property="FavouriteButton" destination="tX0-YY-YSF" id="8m1-ml-VR6"/>
+                        <outlet property="FavouritesButton" destination="DtM-7y-Pg5" id="a6z-oM-0Pz"/>
                         <outlet property="FirstDayCell" destination="XcI-KR-vc5" id="bGF-cd-TLd"/>
                         <outlet property="ForthDayCell" destination="zg6-Uw-VGV" id="k4G-q2-uje"/>
                         <outlet property="SecondDayCell" destination="jAX-JM-EIx" id="3S0-AL-pdi"/>
@@ -276,7 +302,79 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KXO-A6-DBa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2057.971014492754" y="-38.315217391304351"/>
+            <point key="canvasLocation" x="2047.826086956522" y="-38.315217391304351"/>
+        </scene>
+        <!--Search View Controller-->
+        <scene sceneID="Tev-MG-ktj">
+            <objects>
+                <viewController id="3G9-cq-Vlf" customClass="SearchViewController" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Hbp-1z-Yoo">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <searchBar contentMode="redraw" placeholder="Cittá" translatesAutoresizingMaskIntoConstraints="NO" id="iuV-yT-H8e">
+                                <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="a6j-A6-ifA"/>
+                                </constraints>
+                                <textInputTraits key="textInputTraits"/>
+                                <scopeButtonTitles>
+                                    <string>Title</string>
+                                    <string>Title</string>
+                                </scopeButtonTitles>
+                            </searchBar>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="RgF-cW-Uqz">
+                                <rect key="frame" x="0.0" y="88" width="414" height="648"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="ResultCell" textLabel="BJR-WO-zfL" detailTextLabel="CUL-ie-wIY" style="IBUITableViewCellStyleSubtitle" id="Dhm-II-n42">
+                                        <rect key="frame" x="0.0" y="44.666666030883789" width="414" height="43.666667938232422"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Dhm-II-n42" id="lFO-iu-b7n">
+                                            <rect key="frame" x="0.0" y="0.0" width="414" height="43.666667938232422"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Title" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="BJR-WO-zfL">
+                                                    <rect key="frame" x="20" y="7.0000000000000009" width="25" height="14.333333333333334"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="0.0"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="Subtitle" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="CUL-ie-wIY">
+                                                    <rect key="frame" x="19.999999999999996" y="23.333333333333336" width="40.666666666666664" height="13.333333333333334"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="11"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="TVW-E5-IJh"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="iuV-yT-H8e" firstAttribute="top" secondItem="TVW-E5-IJh" secondAttribute="top" id="EXT-yo-1eb"/>
+                            <constraint firstItem="RgF-cW-Uqz" firstAttribute="top" secondItem="iuV-yT-H8e" secondAttribute="bottom" id="GEM-Qe-H6g"/>
+                            <constraint firstItem="iuV-yT-H8e" firstAttribute="centerX" secondItem="Hbp-1z-Yoo" secondAttribute="centerX" id="Xtx-O9-KMB"/>
+                            <constraint firstItem="RgF-cW-Uqz" firstAttribute="bottom" secondItem="TVW-E5-IJh" secondAttribute="bottom" id="etj-Fc-d4k"/>
+                            <constraint firstItem="iuV-yT-H8e" firstAttribute="trailing" secondItem="RgF-cW-Uqz" secondAttribute="trailing" id="n3W-UX-DyJ"/>
+                            <constraint firstItem="iuV-yT-H8e" firstAttribute="leading" secondItem="RgF-cW-Uqz" secondAttribute="leading" id="oKu-jP-kYO"/>
+                            <constraint firstItem="iuV-yT-H8e" firstAttribute="leading" secondItem="TVW-E5-IJh" secondAttribute="leading" id="tYn-Y4-S5Y"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="OVX-Lp-pvR"/>
+                    <connections>
+                        <outlet property="SearchBar" destination="iuV-yT-H8e" id="W9N-NF-vjF"/>
+                        <outlet property="SearchResultsTableView" destination="RgF-cW-Uqz" id="BJa-7J-G64"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="M9c-kb-nJn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2047.826086956522" y="702.71739130434787"/>
         </scene>
         <!--Preferiti-->
         <scene sceneID="Lpy-Ux-pAG">
@@ -333,10 +431,11 @@
             </objects>
             <point key="canvasLocation" x="2941" y="-38"/>
         </scene>
-        <!--Navigation Controller-->
+        <!--Item-->
         <scene sceneID="8CX-Rp-HTO">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="q34-Sx-PBJ" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Item" id="NDZ-sd-4JS"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="Tk0-UF-UOu">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="44"/>
@@ -355,9 +454,9 @@
     <resources>
         <image name="building.2.crop.circle" catalog="system" width="128" height="121"/>
         <image name="list.bullet" catalog="system" width="128" height="88"/>
+        <image name="magnifyingglass" catalog="system" width="128" height="115"/>
         <image name="map" catalog="system" width="128" height="110"/>
         <image name="questionmark" catalog="system" width="96" height="128"/>
-        <image name="star" catalog="system" width="128" height="116"/>
         <namedColor name="AccentColor">
             <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>

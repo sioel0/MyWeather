@@ -7,10 +7,13 @@
 
 #import <Foundation/Foundation.h>
 #import "CitiesDataSource.h"
+#import "CityList.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface CityListDataSource : NSObject<CitiesDataSource>
+
+-(CityList *) getCities;
 
 @end
 

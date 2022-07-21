@@ -17,8 +17,6 @@
 
 @implementation MapViewController
 
-// TODO: fix this placemarks not working
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.MapView.delegate = self;
