@@ -42,10 +42,14 @@
 
 - (void)renderView {
     self.title = self.city.name;
-    if([self.cities contains:self.city])
-        self.FavouritesButton.titleLabel.text = @"Rimuovi dai preferiti";
-    else
-        self.FavouritesButton.titleLabel.text = @"Aggiungi ai preferiti";
+    if([self.cities contains:self.city]){
+        [self.FavouritesButton setTitle: @"Rimuovi dai preferiti" forState: UIControlStateNormal];
+        [self.FavouritesButton setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
+    }
+    else {
+        [self.FavouritesButton setTitle: @"Aggiungi ai preferiti" forState:UIControlStateNormal];
+        [self.FavouritesButton setTitleColor:[UIColor blueColor] forState:UIControlStateNormal];
+    }
 
     dispatch_queue_t queue = dispatch_queue_create("get_meteo_information", NULL);
     dispatch_async(queue, ^{
